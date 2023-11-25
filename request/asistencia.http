@@ -1,0 +1,48 @@
+POST http://localhost:3000/login
+Content-Type: application/json
+
+
+  {
+    "correo": "gabo@d.com",
+    "contraseña":"1234"
+  }
+
+
+###
+POST http://localhost:3000/register
+Content-Type: application/json
+
+
+  {
+    "ci" : "1573273",
+    "nombre": "Daniel Rojas",
+    "correo": "daniel@r.com",
+    "contraseña":"1234",
+    "direccion":"7mo anillo",
+    "rol": "U"
+  }
+###
+
+POST http://localhost:3000/registertaller
+Content-Type: application/json
+
+  {
+     "licencia_funcionamiento": "154315",
+     "razon_social": "Mi BUEN AMIGO", 
+     "propietario": "Diana Siles", 
+     "direccion": "Barrio La molienda"
+  }
+
+
+
+
+###
+
+POST http://localhost:3000/registergerente
+Content-Type: application/json
+
+  {
+  
+  
+
+  }
