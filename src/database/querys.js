@@ -12,4 +12,7 @@ export const queris = {
     updateRol:"UPDATE usuario set rol=@rol  WHERE ID=@id",
     addNewGerente:"INSERT INTO gerente (ID,ID_taller) VALUES (@IDU,@IDT)",
 
+    //añadiendo solicitud
+    addNewSolicitud:"INSERT INTO solicitud (latitud ,longitud ,audio ,descripcion,ID_cliente) VALUES (@latitud ,@longitud ,@audio ,@descripcion,@ID_cliente)",
+
 }

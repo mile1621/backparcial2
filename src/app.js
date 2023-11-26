@@ -3,6 +3,7 @@ import config from './config'
 import authRoutes from './routes/auth.routes'
 import tallerRoutes from './routes/taller.routes'
 import gerenteRoutes from './routes/gerente.routes'
+import solicitudRoutes from './routes/solicitud.routes'
 
 
 const bodyParser = require('body-parser');
@@ -15,6 +16,6 @@ app.set('port', config.port)
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-app.use(authRoutes,tallerRoutes,gerenteRoutes)
+app.use(authRoutes,tallerRoutes,gerenteRoutes,solicitudRoutes)
 
 export default app
