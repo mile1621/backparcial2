@@ -11,5 +11,14 @@ export const queris = {
     //añadiendo gerente
     updateRol:"UPDATE usuario set rol=@rol  WHERE ID=@id",
     addNewGerente:"INSERT INTO gerente (ID,ID_taller) VALUES (@IDU,@IDT)",
-
+    //clientes 
+    getAllClientes:"SELECT * FROM cliente",
+    addNewCliente:"INSERT INTO cliente (ID) VALUES (@IDU)",
+    //vehiculos
+    getAllVehiculos:"SELECT * FROM vehiculo",
+    addNewVehiculo:"INSERT INTO vehiculo (marca,modelo,año,placa,color,ID_cliente) VALUES (@marca,@modelo,@año,@placa,@color,@ID_cliente)",
+    getbyIDV:"SELECT * FROM vehiculo where ID=@id",
+    deleteVehiculo: "DELETE FROM vehiculo WHERE ID=@id",
+    countVehiculos :"SELECT COUNT(*) FROM vehiculo",
+    updateVehiculo:"UPDATE vehiculo set marca=@marca,modelo=@modelo,año=@año,placa=@placa,color=@color,ID_cliente=@ID_cliente",
 }

@@ -1,0 +1,39 @@
+POST http://localhost:3000/registervehiculo
+Content-Type: application/json
+
+
+  {
+
+    "marca": "TOYOTA",
+    "modelo": "camioneta",
+    "año":"2020",
+    "placa":"AB132",
+    "color":"rojo",
+    "ID_cliente":2
+
+  }
+
+###
+PUT http://localhost:3000/vehiculo/actualizar/1
+Content-Type: application/json
+
+
+  {
+
+    "marca": "TOYOTA",
+    "modelo": "camioneta",
+    "año":"2020",
+    "placa":"AB132",
+    "color":"azul",
+    "ID_cliente":2
+
+  }
+
+###
+DELETE http://localhost:3000/vehiculo/eliminar/1
+###
+GET http://localhost:3000/vehiculo/getbyID/2
+###
+GET http://localhost:3000/vehiculo
+###
+GET http://localhost:3000/vehiculos/count
