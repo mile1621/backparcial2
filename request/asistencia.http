@@ -93,3 +93,13 @@ Content-Type: application/json
     "ID_cliente":1
   }
 ###
+
+###
+POST http://localhost:3000/registerCliente
+Content-Type: application/json
+
+
+  {
+    "correo": "daniel@r.com"
+  }
+
