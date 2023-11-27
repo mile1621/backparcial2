@@ -21,4 +21,7 @@ export const queris = {
     deleteVehiculo: "DELETE FROM vehiculo WHERE ID=@id",
     countVehiculos :"SELECT COUNT(*) FROM vehiculo",
     updateVehiculo:"UPDATE vehiculo set marca=@marca,modelo=@modelo,año=@año,placa=@placa,color=@color,ID_cliente=@ID_cliente",
+    //añadiendo solicitud
+    addNewSolicitud:"INSERT INTO solicitud (latitud ,longitud ,audio ,descripcion,ID_cliente) VALUES (@latitud ,@longitud ,@audio ,@descripcion,@ID_cliente)",
+
 }

@@ -3,7 +3,7 @@ Content-Type: application/json
 
 
   {
-    "correo": "gabo@d.com",
+    "correo": "daniel@r.com",
     "contraseña":"1234"
   }
 
@@ -46,6 +46,21 @@ Content-Type: application/json
   
 
   }
+
+###
+
+POST http://localhost:3000/registersolicitud
+Content-Type: application/json
+
+
+  {
+    "latitud" : 37.4219983,
+    "longitud": -122.084,
+    "audio": "ayudaaaaa",
+    "descripcion":"Ya me morí",
+    "ID_cliente":1
+  }
+###
 
 ###
 POST http://localhost:3000/registerCliente
