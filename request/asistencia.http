@@ -22,6 +22,32 @@ Content-Type: application/json
     "rol": "U"
   }
 ###
+POST http://localhost:3000/register
+Content-Type: application/json
+
+
+  {
+    "ci" : "15753",
+    "nombre": "Daniela",
+    "correo": "daniela@r.com",
+    "contraseña":"1234",
+    "direccion":"Sucre",
+    "rol": "U"
+  }
+###
+POST http://localhost:3000/register
+Content-Type: application/json
+
+
+  {
+    "ci" : "157777",
+    "nombre": "Jorge",
+    "correo": "d@r.com",
+    "contraseña":"1234",
+    "direccion":"Sucre",
+    "rol": "U"
+  }
+###
 
 POST http://localhost:3000/registertaller
 Content-Type: application/json
@@ -32,10 +58,16 @@ Content-Type: application/json
      "propietario": "Diana Siles", 
      "direccion": "Barrio La molienda"
   }
+###
+POST http://localhost:3000/registertaller
+Content-Type: application/json
 
-
-
-
+  {
+     "licencia_funcionamiento": "7777",
+     "razon_social": "Mi BUEN AMIGO", 
+     "propietario": "Diana Siles", 
+     "direccion": "Barrio La molienda"
+  }
 ###
 
 POST http://localhost:3000/registergerente

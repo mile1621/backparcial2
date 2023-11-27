@@ -1,4 +1,6 @@
 import {getConnection,sql,queris } from "../database";
+import { createWriteStream } from 'fs';
+
 
 export const getProducts = async (req,res) => {
    //console.log('hola')
@@ -13,11 +15,87 @@ export const getProducts = async (req,res) => {
         res.end();
     }
     
-} 
+}
 
+export const getAllSolicitudes = async (req, res) => {
+  try {
+    const pool = await getConnection();
+
+    const result = await pool.request().query(queris.getAllSolicitudes);
+
+    // El resultado contiene un conjunto de registros de la base de datos
+    const solicitudes = result.recordset;
+
+    res.json({ solicitudes });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Error interno del servidor' });
+  }
+};
+
+export const createNewSolicitud = async (req, res) => {
+  const { latitud, longitud, descripcion, ID_cliente } = req.body;
+
+  try {
+    const pool = await getConnection();
+
+    if (!req.files || Object.keys(req.files).length === 0) {
+      return res.status(400).json({ error: 'Debe adjuntar archivos de audio y foto' });
+    }
+
+    const audioPath = req.files.audio[0].path;
+    const fotoPath = req.files.foto[0].path;
+
+    await pool
+      .request()
+      .input('latitud', sql.Float, latitud)
+      .input('longitud', sql.Float, longitud)
+      .input('audio', sql.VarChar, audioPath)
+      .input('foto', sql.VarChar, fotoPath)
+      .input('descripcion', sql.VarChar, descripcion)
+      .input('ID_cliente', sql.Int, ID_cliente)
+      .query(queris.addNewSolicitud);
+
+    res.json('Nueva Solicitud creada exitosamente');
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Error interno del servidor' });
+  }
+};
+/*
+export const createNewSolicitud = async (req, res) => {
+  const { latitud, longitud, descripcion, ID_cliente } = req.body;
+
+  try {
+    const pool = await getConnection();
+
+    if (!req.file) {
+      return res.status(400).json({ error: 'Debe adjuntar un archivo de audio' });
+    }
+
+    const audioPath = req.file.path;
+
+    await pool
+      .request()
+      .input('latitud', sql.Float, latitud)
+      .input('longitud', sql.Float, longitud)
+      .input('audio', sql.VarChar, audioPath) // Guarda la ruta del archivo en la base de datos
+      .input('descripcion', sql.VarChar, descripcion)
+      .input('ID_cliente', sql.Int, ID_cliente)
+      .query(queris.addNewSolicitud);
+
+    res.json('Nueva Solicitud creada exitosamente');
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Error interno del servidor' });
+  }
+};
+
+*/
+  
+/*
 export const createNewSolicitud = async (req,res) => {
-    const { latitud ,longitud ,audio ,descripcion ,ID_cliente } = req.body
-    //console.log(marca_id, temporada_id, color_id,categoria_id,codigo,nombre,costo)
+    const { latitud ,longitud ,audio ,descripcion ,ID_cliente } = req.body;
 
     try {
         const pool = await getConnection();
@@ -25,7 +103,7 @@ export const createNewSolicitud = async (req,res) => {
         await pool.request()
         .input("latitud",sql.Float,latitud)
         .input("longitud",sql.Float,longitud)
-        .input("audio",sql.VarChar,audio)
+        .input("audio",sql.VarChar, audio) // Almacena como VARBINARY
         .input("descripcion",sql.VarChar,descripcion)
         .input("ID_cliente",sql.Int,ID_cliente)
         .query(queris.addNewSolicitud)
@@ -37,6 +115,8 @@ export const createNewSolicitud = async (req,res) => {
     }
     
 }
+*/
+
 
 export const getbyID = async (req,res) => { 
      const { id } = req.params; 

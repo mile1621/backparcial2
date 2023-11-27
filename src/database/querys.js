@@ -13,6 +13,8 @@ export const queris = {
     addNewGerente:"INSERT INTO gerente (ID,ID_taller) VALUES (@IDU,@IDT)",
 
     //añadiendo solicitud
-    addNewSolicitud:"INSERT INTO solicitud (latitud ,longitud ,audio ,descripcion,ID_cliente) VALUES (@latitud ,@longitud ,@audio ,@descripcion,@ID_cliente)",
-
+    addNewSolicitud:"INSERT INTO solicitud (latitud ,longitud ,audio ,foto,descripcion,ID_cliente) VALUES (@latitud ,@longitud ,@audio ,@foto,@descripcion,@ID_cliente)",
+    
+    // obtener todas las solicitudes
+    getAllSolicitudes: "SELECT * FROM solicitud",
 }
