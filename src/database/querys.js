@@ -17,7 +17,7 @@ export const queris = {
     //vehiculos
     getAllVehiculos:"SELECT * FROM vehiculo",
     addNewVehiculo:"INSERT INTO vehiculo (marca,modelo,año,placa,color,ID_cliente) VALUES (@marca,@modelo,@año,@placa,@color,@ID_cliente)",
-    getbyIDV:"SELECT * FROM vehiculo where ID=@id",
+    getbyIDV:"SELECT * FROM vehiculo where ID_cliente=@id",
     deleteVehiculo: "DELETE FROM vehiculo WHERE ID=@id",
     countVehiculos :"SELECT COUNT(*) FROM vehiculo",
     updateVehiculo:"UPDATE vehiculo set marca=@marca,modelo=@modelo,año=@año,placa=@placa,color=@color,ID_cliente=@ID_cliente",
@@ -31,5 +31,14 @@ export const queris = {
     getAudioPath: "SELECT audio FROM solicitud WHERE ID=@id",
 
     // obtener todas las postulaciones
+    addNewPostulacion: "INSERT INTO postulacion (tiempo_llegada,costo_estimado,servicio,ID_solicitud) VALUES (@tiempo_llegada,@costo_estimado,@servicio,@ID_solicitud)",
     getAllPostulaciones: "SELECT * FROM postulacion",
-}
+
+
+   // mecanicos
+   addNewMecanico:"INSERT INTO mecanico (ID,ID_taller,estado) VALUES (@IDU,@ID_taller,@estado)",
+   getAllMecanicos:"SELECT * FROM mecanico",
+   getIDt:"SELECT ID_taller FROM gerente where ID=@IDG",
+   
+
+} 

@@ -1,0 +1,27 @@
+
+POST http://localhost:3000/registermecanico
+Content-Type: application/json
+
+
+  {
+    "correo":"alejandro@c.com",
+    "ID_gerente":6
+
+  }
+
+###
+GET http://localhost:3000/mecanico
+
+
+###
+POST http://localhost:3000/registerpostulaciones
+Content-Type: application/json
+
+
+  {
+   "tiempo_llegada":"1" ,
+   "costo_estimado" :250,
+   "servicio":"Cambio de llanta",
+   "ID_solicitud":1
+
+  }

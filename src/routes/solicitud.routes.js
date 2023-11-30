@@ -1,5 +1,5 @@
 import {Router} from 'express'
-import {Countproducts, createNewSolicitud, getAllSolicitudes,getAllPostulaciones,deleteproduct, getProducts,getbyID, updateProduct} from '../controllers/solicitud.controller'
+import {Countproducts, createNewSolicitud, getAllSolicitudes,getAllPostulaciones,deleteproduct, getProducts,getbyID, updateProduct, CreateNewPostulacion} from '../controllers/solicitud.controller'
 
 
 
@@ -34,6 +34,9 @@ router.get('/allsolicitudes',getAllSolicitudes);
 
 
 router.get('/allpostulaciones',getAllPostulaciones);
+
+router.post('/registerpostulaciones',CreateNewPostulacion);
+
 
 router.get('/products/:id',getbyID)
 
