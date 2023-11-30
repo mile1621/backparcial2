@@ -1,5 +1,6 @@
 import {getConnection,sql,queris } from "../database";
 import { createWriteStream } from 'fs';
+import fs from 'fs';
 
 
 export const getProducts = async (req,res) => {
@@ -49,30 +50,6 @@ export const getAllSolicitudes = async (req, res) => {
   }
 };
 
-export const getAudioFile = async (req, res) => {
-  const solicitudId = req.params.id;
-
-  try {
-    const pool = await getConnection();
-
-    const result = await pool
-      .request()
-      .input('id', sql.Int, solicitudId)
-      .query(queris.getAudioPath); // Asegúrate de tener la consulta adecuada para obtener la ruta del archivo de audio
-
-    if (result.recordset.length === 0) {
-      return res.status(404).json({ error: 'Solicitud no encontrada' });
-    }
-
-    const audioPath = result.recordset[0].audio;
-
-    // Devuelve el archivo como respuesta
-    res.sendFile(audioPath);
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: 'Error interno del servidor' });
-  }
-};
 
 export const createNewSolicitud = async (req, res) => {
   const { latitud, longitud, descripcion, ID_cliente } = req.body;
