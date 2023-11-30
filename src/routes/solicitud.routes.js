@@ -1,5 +1,5 @@
 import {Router} from 'express'
-import {Countproducts, createNewSolicitud, getAllSolicitudes,deleteproduct, getProducts,getbyID, updateProduct} from '../controllers/solicitud.controller'
+import {Countproducts, createNewSolicitud, getAllSolicitudes,getAudioFile,getAllPostulaciones,deleteproduct, getProducts,getbyID, updateProduct} from '../controllers/solicitud.controller'
 
 
 
@@ -32,6 +32,10 @@ router.post('/registersolicitud', upload.fields([{ name: 'audio', maxCount: 1 },
 
 router.get('/allsolicitudes',getAllSolicitudes);
 
+// Nueva ruta para obtener el archivo de audio
+router.get('/audiosolicitud/:id', getAudioFile);
+
+router.get('/allpostulaciones',getAllPostulaciones);
 
 router.get('/products/:id',getbyID)
 

@@ -17,6 +17,22 @@ export const getProducts = async (req,res) => {
     
 }
 
+export const getAllPostulaciones = async (req, res) => {
+  try {
+    const pool = await getConnection();
+
+    const result = await pool.request().query(queris.getAllPostulaciones);
+
+    // El resultado contiene un conjunto de registros de la base de datos
+    const postulaciones = result.recordset;
+
+    res.json({ postulaciones });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Error interno del servidor' });
+  }
+};
+
 export const getAllSolicitudes = async (req, res) => {
   try {
     const pool = await getConnection();
@@ -27,6 +43,31 @@ export const getAllSolicitudes = async (req, res) => {
     const solicitudes = result.recordset;
 
     res.json({ solicitudes });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Error interno del servidor' });
+  }
+};
+
+export const getAudioFile = async (req, res) => {
+  const solicitudId = req.params.id;
+
+  try {
+    const pool = await getConnection();
+
+    const result = await pool
+      .request()
+      .input('id', sql.Int, solicitudId)
+      .query(queris.getAudioPath); // Asegúrate de tener la consulta adecuada para obtener la ruta del archivo de audio
+
+    if (result.recordset.length === 0) {
+      return res.status(404).json({ error: 'Solicitud no encontrada' });
+    }
+
+    const audioPath = result.recordset[0].audio;
+
+    // Devuelve el archivo como respuesta
+    res.sendFile(audioPath);
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: 'Error interno del servidor' });

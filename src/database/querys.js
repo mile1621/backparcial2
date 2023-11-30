@@ -26,4 +26,10 @@ export const queris = {
     
     // obtener todas las solicitudes
     getAllSolicitudes: "SELECT * FROM solicitud",
+
+    // obtener el audio de una solicitud por su id
+    getAudioPath: "SELECT audio FROM solicitud WHERE ID=@id",
+
+    // obtener todas las postulaciones
+    getAllPostulaciones: "SELECT * FROM postulacion",
 }
