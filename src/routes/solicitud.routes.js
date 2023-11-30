@@ -1,8 +1,10 @@
 import {Router} from 'express'
 import {Countproducts, createNewSolicitud, getAllSolicitudes,deleteproduct, getProducts,getbyID, updateProduct} from '../controllers/solicitud.controller'
+
+
+
 import multer from 'multer';        //necesario para usar archivos de audio o cualquier otro
 const path = require('path');       //necesario para usar archivos de audio o cualquier otro
-
 
 const storage = multer.diskStorage({       //necesario para usar archivos de audio o cualquier otro
   destination: function (req, file, cb) {
@@ -13,8 +15,9 @@ const storage = multer.diskStorage({       //necesario para usar archivos de aud
   },
 });
 
-
 const upload = multer({ storage: storage });      //necesario para usar archivos de audio o cualquier otro
+
+
 
 
 const router = Router()
@@ -24,10 +27,10 @@ router.get('/products',getProducts)
 router.get('/products/count',Countproducts)
 
 router.post('/registersolicitud', upload.fields([{ name: 'audio', maxCount: 1 }, { name: 'foto', maxCount: 1 }]), createNewSolicitud);
-//router.post('/registersolicitud',upload.single('audio'),createNewSolicitud)
+//router.post('/registersolicitud',upload.single('audio'),createNewSolicitud)      //ESTO OCUPA MILENKA
 //router.post('/registersolicitud',createNewSolicitud)
 
-router.get('/allsolicitudes', getAllSolicitudes);
+router.get('/allsolicitudes',getAllSolicitudes);
 
 
 router.get('/products/:id',getbyID)

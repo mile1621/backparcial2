@@ -39,7 +39,7 @@ export const createNewSolicitud = async (req, res) => {
   try {
     const pool = await getConnection();
 
-    if (!req.files || Object.keys(req.files).length === 0) {
+    if (!req.files || Object.keys(req.files).length === 0) {        //validación de los archivos , podés ignorar
       return res.status(400).json({ error: 'Debe adjuntar archivos de audio y foto' });
     }
 
