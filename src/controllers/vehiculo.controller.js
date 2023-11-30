@@ -5,7 +5,9 @@ export const getVehiculos = async (req,res) => {
     try {
         const pool = await getConnection();
         const result = await pool.request().query(queris.getAllVehiculos);
-        res.json(result.recordset[0])
+        res.json(result.recordset)
+       // console.log(result)
+
         
     } catch (error) {
         res.writeHead(500, { 'Content-Type': 'text/plain' });
@@ -44,10 +46,10 @@ export const getbyIDV = async (req,res) => {
         const pool = await getConnection();
         const result = await pool
         .request()
-        .input("id",id)
+        .input("id",sql.Int,id)
         .query(queris.getbyIDV);  
        // console.log(result);
-        res.send(result.recordset[0]);
+        res.send(result.recordset);
      } catch (error) {
         res.writeHead(500, { 'Content-Type': 'text/plain' });
         res.end();

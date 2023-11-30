@@ -32,7 +32,7 @@ Content-Type: application/json
 ###
 DELETE http://localhost:3000/vehiculo/eliminar/1
 ###
-GET http://localhost:3000/vehiculo/getbyID/2
+GET http://localhost:3000/vehiculo/getbyID/9
 ###
 GET http://localhost:3000/vehiculo
 ###

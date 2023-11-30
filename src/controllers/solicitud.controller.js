@@ -17,6 +17,28 @@ export const getProducts = async (req,res) => {
     
 }
 
+export const CreateNewPostulacion = async (req,res) => {
+  const { tiempo_llegada ,costo_estimado ,servicio,ID_solicitud } = req.body
+  //console.log(marca_id, temporada_id, color_id,categoria_id,codigo,nombre,costo)
+
+  try {
+      const pool = await getConnection();
+  
+      await pool.request()
+      .input("tiempo_llegada",sql.Int,tiempo_llegada)
+      .input("costo_estimado",sql.Int,costo_estimado)
+      .input("servicio",sql.VarChar,servicio)
+      .input("ID_solicitud",sql.Int,ID_solicitud)
+      .query(queris.addNewPostulacion)
+
+      res.json("new Postulacion")
+  } catch (error) {
+      res.writeHead(500, { 'Content-Type': 'text/plain' });
+      res.end();
+  }
+}
+
+
 export const getAllPostulaciones = async (req, res) => {
   try {
     const pool = await getConnection();
